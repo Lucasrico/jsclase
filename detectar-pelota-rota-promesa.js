@@ -16,9 +16,21 @@ const jugadasDos = [1, 3, 2, 3, 4, 1, 1, 2, 2, 3, 3, 4, 4, 1, 4, 2];
 
 function comprobarPelotas(jugadas) {
     let p = new Promise(function (resolve, reject) {
-
+        let apar = [];
+        for (let i = 0; i < jugadas.length; i++) {
+            apar[i]++;
+        }
+        for (let i = 0; i < apar.length; i++) {
+            if (apar[i] > 5) {
+                reject();
+            }
+        }
     });
     return p;
+}
+
+function nook() {
+    console.log("no ok");
 }
 
 comprobarPelotas(jugadasUno).then(console.log("pelotas ok")).catch(nook);
