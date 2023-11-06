@@ -19,7 +19,7 @@ connection.connect((error) => { // Conectamos a la BBDD (?)(Funciona sin esto?? 
     console.log("Conectado a MySQL!!");
 });
 
-connection.query("select * from usuarios", (error, result, fields) => { // Hacemos el query a la BBDD.
+connection.query("select * from usuarios", (error, result, fields) => { // Hacemos el query a la BBDD. Recordamos que esta query nos devuelve result.
     //Devolvemos el mensaje de error si hay algun error al hacer la query
     if (error) {
         return console.error(`error: ${error.message}`)
@@ -30,6 +30,6 @@ connection.query("select * from usuarios", (error, result, fields) => { // Hacem
     });
 
     app.get("/clientes", function (request, response) { //Devolvemos en /clientes lo que pongamos en response.send() como parametro.
-        response.send(result);
+        response.send(result); // En este caso en vez de devollver "hola como estas", devolvemos "result", que es lo que devuelve el query a la BBDD.
     });
 });
