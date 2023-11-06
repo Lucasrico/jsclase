@@ -20,7 +20,15 @@ function resta(a, b) {
 }
 
 function contar(secuencia) {
-    // escribe tu codigo aqui
+    let ganasuma = 0;
+    for (let i = 0; i < secuencia.length; i++) {
+        if (secuencia[i](1, 1) == 2) { //es sumar
+            ganasuma++;
+        } else { //es restar
+            ganasuma--;
+        }
+    }
+    return ganasuma > 0 ? "suma" : "resta";
 }
 
 console.log(contar(secuenciaUno)); // debe mostrar "suma"

@@ -18,20 +18,29 @@ function comprobarPelotas(jugadas) {
     let p = new Promise(function (resolve, reject) {
         let apar = [];
         for (let i = 0; i < jugadas.length; i++) {
-            apar[i]++;
-        }
-        for (let i = 0; i < apar.length; i++) {
-            if (apar[i] > 5) {
-                reject();
+            if (apar[jugadas[i]] == undefined) {
+                apar[jugadas[i]] = 1;
+            } else {
+                apar[jugadas[i]]++;
             }
         }
+        for (let i = 0; i < apar.length; i++) {
+            if (apar[i] > 4) {
+                reject(i);
+            }
+        }
+        resolve(apar);
     });
     return p;
 }
 
-function nook() {
-    console.log("no ok");
+function nook(pelota) {
+    console.log("no ok " + pelota);
 }
 
-comprobarPelotas(jugadasUno).then(console.log("pelotas ok")).catch(nook);
-comprobarPelotas(jugadasDos).then(console.log("pelotas ok")).catch(nook);
+function ok() {
+    console.log("pelotas ok");
+}
+
+comprobarPelotas(jugadasUno).then(ok).catch(nook);
+comprobarPelotas(jugadasDos).then(ok).catch(nook);

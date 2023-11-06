@@ -1,8 +1,5 @@
 let ord = [];
 
-
-
-
 const mysql = require('mysql2');
 //crear conexion a base de datos polodigital en mysql
 const connection = mysql.createConnection({
