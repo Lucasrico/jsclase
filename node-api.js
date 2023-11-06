@@ -36,3 +36,18 @@ app.get("/clientes", function (request, response) { //Devolvemos en /clientes lo
 
 //Ejercicio otro: Devuelve una lista con todos los registros de la tabla empleados y empleados_clientes.
 
+app.get("/todos-empleados", (request, response) => {
+    let lista = [];
+    connection.query("select * from empleados", (error, result, fields) => {
+        for (let i = 0; i < result.length; i++) {
+            lista[i] = result[i];
+        }
+    });
+
+    connection.query("select * from empleadosclientes", (error, result, fields) => {
+        for (let i = 0; i < result.length; i++) {
+            lista[lista.length] = result[i];
+        }
+        response.send(lista);
+    });
+});
