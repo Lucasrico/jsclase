@@ -55,10 +55,6 @@ app.get("/clientes", function (request, response) { //Devolvemos en /clientes lo
 app.get("/todos-empleados", (request, response) => {
     connection.query("select * from empleados", (error, lista1, fields) => {
         connection.query("select * from empleadosclientes", (error, lista2, fields) => {
-            // for (let i = 0; i < lista2.length; i++) {
-            //     lista1[lista1.length] = lista2[i];
-            // }
-
             response.send(lista1.concat(lista2));
         });
     });
